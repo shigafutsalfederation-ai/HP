@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滋賀県フットサル連盟 | SHIGA FUTSAL FEDERATION</title>
+    <link class="favicon" rel="icon" type="image/png" href="photo/sfa.png">
+    <link rel="apple-touch-icon" href="photo/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --shiga-blue: #005bac;
+            --shiga-green: #28a745;
+            --shiga-white: #ffffff;
+            --shiga-dark-green: #006400;
+        }
+        
+        /* スマホなどのスクロールを滑らかにする魔法 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: #333;
+            background-color: #f0f2f5;
+        }
+        .bg-shiga-blue { background-color: var(--shiga-blue); }
+        .text-shiga-blue { color: var(--shiga-blue); }
+        .border-shiga-blue { border-color: var(--shiga-blue); }
+        .bg-shiga-green { background-color: var(--shiga-green); }
+        .text-shiga-green { color: var(--shiga-green); }
+        .border-shiga-green { border-color: var(--shiga-green); }
+        .bg-shiga-dark-green { background-color: var(--shiga-dark-green); }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 50, 100, 0.75), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* サイドメニューの装飾 */
+        .side-menu-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            color: #4b5563;
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .side-menu-item:hover, .side-menu-item.active {
+            background-color: #e5e7eb;
+            color: var(--shiga-blue);
+            border-left-color: var(--shiga-blue);
+        }
+        .side-submenu-item {
+            display: block;
+            padding: 0.4rem 1rem 0.4rem 2.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .side-submenu-item:hover, .side-submenu-item.active {
+            color: var(--shiga-blue);
+            text-decoration: underline;
+        }
+
+        .sponsor-banner {
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .sponsor-banner:hover {
+            border-color: var(--shiga-blue);
+            transform: translateX(5px);
+            background-color: #fff;
+        }
+
+        /* 無限ループスライダーのアニメーション */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 5)); }
+        }
+        .slider-track {
+            display: flex;
+            width: calc(250px * 10);
+            animation: scroll 40s linear infinite;
+        }
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+        .slide {
+            width: 250px;
+            height: 180px;
+            padding: 5px;
+            flex-shrink: 0;
+        }
+
+        iframe.instagram-media {
+            min-width: 100% !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        /* モバイルメニューのスタイル調整 */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* テーブルヘッダー固定装飾 */
+        .table-th {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-weight: bold;
+        }
+        
+        /* ページタイトルの緑ヘッダー用 */
+        .page-header-green {
+            background-color: var(--shiga-dark-green);
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Google Calendar Responsive */
+        .calendar-container {
+            position: relative;
+            padding-bottom: 75%; /* Aspect ratio for calendar */
+            height: 0;
+            overflow: hidden;
+        }
+        .calendar-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: 768px) {
+            .calendar-container {
+                padding-bottom: 600px; /* Fixed height for desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="bg-shiga-blue text-white text-[10px] md:text-xs py-2 px-4 flex justify-between items-center">
+        <span>滋賀県フットサル連盟 オフィシャルウェブサイト</span>
+        <div class="flex space-x-4">
+            <a href="javascript:void(0);" onclick="showPage('contact')" class="hover:underline">お問い合わせ</a>
+            <a href="javascript:void(0);" onclick="showPage('home')" class="hover:underline">ホーム</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-50 border-b shadow-sm" id="main-header">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <!-- ロゴとタイトル-->
+            <a href="javascript:void(0);" onclick="showPage('home')" class="flex items-center space-x-3 hover:opacity-90 transition">
+                <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center overflow-hidden">
+                    <img src="photo/sfa.png" alt="滋賀県フットサル連盟 ロゴ" class="max-w-full max-h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=100'">
+                </div>
+                <div>
+                    <h1 class="text-base md:text-xl font-bold text-shiga-blue leading-tight tracking-tighter uppercase">滋賀県フットサル連盟</h1>
+                    <p class="hidden md:block text-[10px] font-semibold text-gray-500 tracking-widest uppercase">Shiga Futsal Federation</p>
+                </div>
+            </a>
+
+            <!-- Header Links & Hamburger Button -->
+            <div class="flex items-center space-x-4">
+                <nav class="hidden lg:flex items-center gap-x-6 text-sm md:text-base font-bold text-gray-700">
+                    <a href="javascript:void(0);" onclick="showPage('guide')" class="hover:text-shiga-blue transition border-y-2 border-transparent hover:border-b-shiga-blue py-1">ご利用案内(料金)</a>
+                    <a href="javascript:void(0);" onclick="showPage('access')" class="hover:text-shiga-blue transition border-y-2 border-transparent hover:border-b-shiga-blue py-1">アクセス</a>
+                    <a href="tel:0748-77-5170" class="text-shiga-blue hover:text-blue-700 transition flex items-center whitespace-nowrap bg-blue-50 px-3 py-1 rounded-full border border-blue-200 text-xs md:text-sm">
+                        <i class="fas fa-phone mr-1.5"></i>0748-77-5170
+                    </a>
+                </nav>
+                
+                <!-- Hamburger Menu Button -->
+                <button id="menu-btn" class="lg:hidden text-gray-700 hover:text-shiga-blue focus:outline-none p-2" aria-label="メニューを開く">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-[100] opacity-0 pointer-events-none transition-all duration-300">
+        <div class="fixed right-0 top-0 bottom-0 w-4/5 max-w-xs bg-white p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
+            <div>
+                <div class="flex justify-between items-center mb-8">
+                    <span class="font-bold text-shiga-blue">MENU</span>
+                    <button id="close-menu-btn" class="text-gray-500 hover:text-shiga-blue p-2">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-xs font-black text-gray-400 border-b pb-1">メインコンテンツ</p>
+                    <a href="javascript:void(0);" onclick="showPage('home')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-home mr-2 text-shiga-blue"></i>ホーム / 更新情報</a>
+                    <a href="javascript:void(0);" onclick="showPage('guide')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-money-bill-wave mr-2 text-shiga-blue"></i>ご利用案内・レンタル料金</a>
+                    <a href="javascript:void(0);" onclick="showPage('facilities')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-map-marker-alt mr-2 text-shiga-blue"></i>施設案内</a>
+                    <a href="javascript:void(0);" onclick="showPage('access')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-map-marked-alt mr-2 text-shiga-blue"></i>アクセス</a>
+                    
+                    <p class="text-xs font-black text-gray-400 border-b pb-1 pt-4">お申し込み・カレンダー</p>
+                    <a href="javascript:void(0);" onclick="showPage('calendar')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-calendar-alt mr-2 text-blue-500"></i>イベントカレンダー</a>
+                    <a href="javascript:void(0);" onclick="showPage('tournaments')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-trophy mr-2 text-yellow-500"></i>大会・リーグ情報</a>
+                    <a href="javascript:void(0);" onclick="showPage('individual')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-user-friends mr-2 text-purple-500"></i>個人参加</a>
+
+                    <p class="text-xs font-black text-gray-400 border-b pb-1 pt-4">その他</p>
+                    <a href="javascript:void(0);" onclick="showPage('vision')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-tv mr-2 text-shiga-blue"></i>L ビジョン広告会員について</a>
+                    <a href="javascript:void(0);" onclick="showPage('contact')" class="block font-bold text-gray-700 hover:text-shiga-blue py-1"><i class="fas fa-phone mr-2 text-gray-500"></i>お問い合わせ</a>
+                </div>
+            </div>
+            <div class="border-t pt-4">
+                <p class="text-xs font-bold text-gray-500">滋賀県フットサル連盟 事務局</p>
+                <a href="tel:0748-77-5170" class="text-shiga-blue font-black block mt-1"><i class="fas fa-phone mr-1"></i>0748-77-5170</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient h-[250px] md:h-[350px] flex items-center justify-center text-center text-white px-4 relative overflow-hidden bg-gray-950">
+        
+        <!-- スライドコンテナ -->
+        <div class="absolute inset-0 z-0">
+            <!-- Slide 1 -->
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100 bg-gradient-to-tr from-blue-900 via-blue-800 to-indigo-900">
+                <img src="photo\DSCF2385.jpg" alt="Slide 1" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
+                <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 1</div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-emerald-900 via-green-800 to-teal-900">
+                <img src="photo\DSCF2359.jpg" alt="Slide 2" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
+                <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 2</div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-slate-900 via-blue-950 to-indigo-950">
+                <img src="photo\DSCF2411.jpg" alt="Slide 3" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
+                <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 3</div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-green-950 via-emerald-800 to-cyan-950">
+                <img src="photo\DSCF2429.jpg" alt="Slide 4" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
+                <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 4</div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-blue-950 via-indigo-900 to-purple-950">
+                <img src="photo\DSCF0810.jpg" alt="Slide 5" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
+                <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 5</div>
+            </div>
+        </div>
+
+        <!-- 全体オーバーレイ -->
+        <div class="absolute inset-0 bg-black/30 z-10"></div>
+
+        <!-- コンテンツ -->
+        <div class="relative z-20 max-w-3xl">
+            <h2 class="text-2xl md:text-4xl font-black mb-3 drop-shadow-2xl leading-tight italic uppercase">Shiga Futsal Federation Official Web Site</h2>
+            <p class="text-xs md:text-base mb-6 drop-shadow-lg font-medium">滋賀のフットサルを、もっと身近に。もっと熱く。</p>
+            <div class="flex justify-center gap-4">
+                <a href="https://www.instagram.com/ishibe.yk/" target="_blank" class="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-6 py-2 rounded-full font-bold shadow-lg flex items-center text-xs md:text-sm transition hover:scale-105">
+                    <i class="fab fa-instagram mr-2 text-lg"></i>Instagramで最新情報
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#f0f2f5] to-transparent z-10"></div>
+    </section>
+
+    <!-- Main Container Layout -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Left Side Menu  -->
+            <aside id="side-nav" class="lg:w-1/4 space-y-6">
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="mb-6">
+                        <div class="flex items-center text-shiga-blue mb-3 px-2 border-b pb-2">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            <span class="font-black text-sm uppercase tracking-wider">Net Booking</span>
+                        </div>
+                        <div class="space-y-1">
+                            <a href="javascript:void(0);" onclick="showPage('guide')" class="side-menu-item flex items-center" id="menu-booking"><i class="fas fa-plus-circle mr-2 w-5 text-shiga-blue"></i>ネット予約のご案内</a>
+                            <div class="flex flex-col">
+                                <a href="https://select-type.com/member/reg/?mi=rATiS3GHIds" target="_blank" class="side-submenu-item"><i class="fas fa-user-plus mr-1.5 opacity-70"></i>メンバー新規登録</a>
+                                <a href="https://select-type.com/member/login/?mi=rATiS3GHIds" target="_blank" class="side-submenu-item"><i class="fas fa-sign-in-alt mr-1.5 opacity-70"></i>ログイン</a>
+                                <a href="https://select-type.com/rsv/?id=CaWEHFt78Mg&c_id=110280&w_flg=1" target="_blank" class="side-submenu-item"><i class="far fa-calendar-check mr-1.5 opacity-70"></i>コート空き状況・予約</a>
+                                <a href="https://select-type.com/rsv/?id=CaWEHFt78Mg&c_id=110780&w_flg=1&mode=1" target="_blank" class="side-submenu-item"><i class="fas fa-user-friends mr-1.5 opacity-70"></i>個人参加予約</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <a href="javascript:void(0);" onclick="showPage('home')" class="side-menu-item active" id="menu-home"><i class="fas fa-bullhorn mr-2 w-5 text-red-500"></i>更新情報</a>
+                        <a href="javascript:void(0);" onclick="showPage('calendar')" class="side-menu-item" id="menu-calendar"><i class="fas fa-calendar-alt mr-2 w-5 text-blue-500"></i>イベントカレンダー</a>
+                        <a href="javascript:void(0);" onclick="showPage('tournaments')" class="side-menu-item" id="menu-tournaments"><i class="fas fa-trophy mr-2 w-5 text-yellow-500"></i>リーグ・大会情報</a>
+                        <a href="javascript:void(0);" onclick="showPage('individual')" class="side-menu-item" id="menu-individual"><i class="fas fa-user-friends mr-2 w-5 text-purple-500"></i>個人参加 (個サル)</a>
+                        
+                        <a href="javascript:void(0);" onclick="showPage('facilities')" class="side-menu-item mt-2" id="menu-facilities"><i class="fas fa-map-marker-alt mr-2 w-5 text-emerald-500"></i>施設案内</a>
+                        <a href="javascript:void(0);" onclick="showPage('access')" class="side-menu-item" id="menu-access"><i class="fas fa-map-marked-alt mr-2 w-5 text-indigo-500"></i>アクセス</a>
+                        <a href="javascript:void(0);" onclick="showPage('contact')" class="side-menu-item" id="menu-contact"><i class="fas fa-envelope mr-2 w-5 text-gray-500"></i>お問い合わせ</a>
+                    </div>
+                </div>
+
+                <!-- Banner Link: ご利用案内(料金) -->
+                <a href="javascript:void(0);" onclick="showPage('guide')" class="block bg-shiga-blue text-white p-4 rounded-2xl shadow-md font-bold text-center hover:bg-blue-700 transition">
+                    <i class="fas fa-info-circle mr-2"></i>ご利用案内(料金)はこちら
+                </a>
+            </aside>
+
+            <!-- Main Content Area  -->
+            <main class="lg:w-1/2 min-h-[500px]" id="main-content">
+                
+                <!-- ==================== PAGE: HOME ==================== -->
+                <div id="page-home" class="page-section space-y-10">
+                    <!-- News Section -->
+                    <section id="news" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="flex justify-between items-center mb-6 border-b pb-4">
+                            <h3 class="text-xl font-black text-shiga-blue uppercase">News</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex gap-4 items-start border-b border-gray-50 pb-4">
+                                <div class="text-center min-w-[60px]">
+                                    <p class="text-[10px] font-bold text-gray-400">2026</p>
+                                    <p class="text-lg font-black leading-none text-shiga-blue">06.09</p>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full mb-1 inline-block">SNS</span>
+                                    <a href="https://www.instagram.com/ishibe.yk/" target="_blank" class="block font-bold text-gray-800 hover:text-shiga-blue">Instagramを更新しました。最新の活動情報はこちら！</a>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start border-b border-gray-50 pb-4">
+                                <div class="text-center min-w-[60px]">
+                                    <p class="text-[10px] font-bold text-gray-400">2026</p>
+                                    <p class="text-lg font-black leading-none text-shiga-blue">01.15</p>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full mb-1 inline-block">info</span>
+                                    <a href="https://www.instagram.com/ishibe.yk/" class="block font-bold text-gray-800 hover:text-shiga-blue">公式Instagram開設しました！フォローお待ちしております！</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Booking System Link -->
+                    <section class="bg-gradient-to-r from-[#005bac] to-[#003c77] p-6 rounded-2xl shadow-md group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-400">
+                        <a href="https://select-type.com/member/login/?mi=rATiS3GHIds" target="_blank" class="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-shiga-blue text-xl font-black shadow-sm group-hover:scale-105 transition-transform">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-white text-sm md:text-base tracking-tight">甲賀高分子スタジアム 総合予約システム</h4>
+                                    <p class="text-xs text-blue-100 font-bold tracking-widest mt-0.5">【メンバーページ】へログイン</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-circle-right text-white text-2xl group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </section>
+
+                    <!-- Instagram Embed Section -->
+                    <section id="instagram-feed" class="bg-white rounded-2xl p-0 sm:p-6 shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="p-4 sm:p-0 sm:mb-6 border-b sm:border-b pb-4 flex justify-between items-center">
+                            <h3 class="text-xl font-black text-shiga-blue flex items-center">
+                                <i class="fab fa-instagram mr-2 text-pink-600 text-2xl"></i>
+                                公式Instagram
+                            </h3>
+                            <a href="https://www.instagram.com/ishibe.yk/" target="_blank" class="text-xs font-bold text-pink-600 hover:underline">
+                                @ishibe.yk <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row gap-4 justify-center items-center md:items-stretch w-full px-2 pb-4 sm:px-0 sm:pb-0">
+                            
+                            <!-- 投稿埋め込み枠 1 -->
+                            <div class="w-full max-w-[320px] flex justify-center overflow-hidden">
+                                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZWqQALkYFT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; min-width:100%; padding:0; width:100%;">
+                                    <!-- プレースホルダー -->
+                                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between w-full h-[450px]">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-10 h-10 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 p-[2px] rounded-full">
+                                                    <div class="w-full h-full rounded-full bg-white p-[1px] flex items-center justify-center overflow-hidden">
+                                                        <!-- 修正：loading="lazy" を追加 -->
+                                                        <img src="photo/sfa.png" loading="lazy" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=100'">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p class="text-xs font-black text-gray-800 leading-none">ishibe.yk</p>
+                                                    <p class="text-[9px] text-gray-400 mt-1">甲賀高分子スタジアム</p>
+                                                </div>
+                                            </div>
+                                            <i class="fab fa-instagram text-xl text-pink-500"></i>
+                                        </div>
+                                        <div class="aspect-square rounded-lg bg-gradient-to-tr from-blue-900 to-indigo-900 flex flex-col items-center justify-center text-white/40 mb-3 relative overflow-hidden">
+                                            <i class="fab fa-instagram text-4xl mb-1"></i>
+                                            <span class="text-[10px] font-bold">Tap to View Post</span>
+                                        </div>
+                                        <div class="space-y-1.5 mb-3 flex-1">
+                                            <div class="h-3 bg-gray-200 rounded w-5/6"></div>
+                                            <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                                        </div>
+                                        <div class="flex justify-between items-center text-gray-500 border-t pt-3 text-xs font-bold">
+                                            <span class="hover:text-pink-600 transition"><i class="fas fa-heart mr-1.5"></i>いいね！</span>
+                                            <span class="text-[10px] text-gray-400">Instagramで見る</span>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                            <!-- 投稿埋め込み枠 2 -->
+                            <div class="w-full max-w-[320px] flex justify-center overflow-hidden">
+                                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DXWopzGAfIq/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; min-width:100%; padding:0; width:100%;">
+                                    <!-- プレースホルダー -->
+                                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between w-full h-[450px]">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-10 h-10 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 p-[2px] rounded-full">
+                                                    <div class="w-full h-full rounded-full bg-white p-[1px] flex items-center justify-center overflow-hidden">
+                                                        <!-- 修正：loading="lazy" を追加 -->
+                                                        <img src="photo/sfa.png" loading="lazy" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=100'">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p class="text-xs font-black text-gray-800 leading-none">ishibe.yk</p>
+                                                    <p class="text-[9px] text-gray-400 mt-1">甲賀高分子スタジアム</p>
+                                                </div>
+                                            </div>
+                                            <i class="fab fa-instagram text-xl text-pink-500"></i>
+                                        </div>
+                                        
+                                        <div class="aspect-square rounded-lg bg-gradient-to-tr from-emerald-900 to-teal-900 flex flex-col items-center justify-center text-white/40 mb-3 relative overflow-hidden">
+                                            <i class="fab fa-instagram text-4xl mb-1"></i>
+                                            <span class="text-[10px] font-bold">Tap to View Post</span>
+                                        </div>
+                                        <div class="space-y-1.5 mb-3 flex-1">
+                                            <div class="h-3 bg-gray-200 rounded w-5/6"></div>
+                                            <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                                        </div>
+                                        <div class="flex justify-between items-center text-gray-500 border-t pt-3 text-xs font-bold">
+                                            <span class="hover:text-pink-600 transition"><i class="fas fa-heart mr-1.5"></i>いいね！</span>
+                                            <span class="text-[10px] text-gray-400">Instagramで見る</span>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                        </div>
+                        <!-- Instagram埋め込み用のスクリプトの読み込み（deferで遅延させる） -->
+                        <script src="//www.instagram.com/embed.js"></script>
+                    </section>
+                </div>
+
+
+                <!-- ==================== PAGE:ご利用案内 (GUIDE) ==================== -->
+                <div id="page-guide" class="page-section hidden space-y-6">
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-black text-shiga-blue mb-4 pb-2 border-b"><i class="fas fa-info-circle mr-2"></i>ご利用案内（料金）について　【甲賀高分子スタジアム】</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 border-l-4 border-shiga-blue pl-2 mb-3">ピッチご利用の手続き</h4>
+                            <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-2">
+                                <li>当日は、予約された10分前までに受付カウンターに手続きをして下さい。</li>
+                                <li>会員の方は、登録カードを提出の上、会員券及び現金でお支払い下さい。</li>
+                            </ol>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 border-l-4 border-shiga-blue pl-2 mb-3">ピッチご利用料金表 - 1時間1面貸し</h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden text-center">
+                                    <thead>
+                                        <tr class="table-th">
+                                            <th class="p-3 border border-gray-200">対象</th>
+                                            <th class="p-3 border border-gray-200">平日<br>デイタイム<br><span class="text-xs font-normal">(10時〜17時)</span></th>
+                                            <th class="p-3 border border-gray-200">土・日・祝<br>夜間<br><span class="text-xs font-normal">(17時〜23時)</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-bold bg-gray-50 text-left">一般</td>
+                                            <td class="p-3 border border-gray-200">7,700 円</td>
+                                            <td class="p-3 border border-gray-200">10,450 円</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-bold bg-gray-50 text-left">一般会員</td>
+                                            <td class="p-3 border border-gray-200">5,500 円</td>
+                                            <td class="p-3 border border-gray-200">7,700 円</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-bold bg-gray-50 text-left">学生会員</td>
+                                            <td class="p-3 border border-gray-200">4,400 円</td>
+                                            <td class="p-3 border border-gray-200">6,600 円</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-bold bg-gray-50 text-left">小学生・幼稚園</td>
+                                            <td class="p-3 border border-gray-200">4,400 円</td>
+                                            <td class="p-3 border border-gray-200">4,400 円</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">※利用料金表は、全て税込み金額表示となっています。</p>
+                        </div>
+
+                        <div class="mb-6 bg-red-50/40 p-5 rounded-xl border border-red-100">
+                            <h4 class="font-bold text-gray-800 mb-2.5 flex items-center border-l-4 border-shiga-blue pl-2"><i class="fas fa-calendar-times mr-2 text-red-500"></i>ピッチのキャンセル料金について</h4>
+                            <p class="text-sm text-red-600 leading-relaxed mb-3 font-semibold">
+                                予約済みのピッチをキャンセルする場合は、以下のキャンセル料金が発生致します
+                            </p>
+                            <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-2 mb-3">
+                                <li>11日前までのキャンセルは<span class="font-bold">無料</span></li>
+                                <li>10日前〜7日前までのキャンセルは<span class="font-bold">ピッチ使用料金の30％</span></li>
+                                <li>6日前〜4日前までのキャンセルは<span class="font-bold">ピッチ使用料金の50％</span></li>
+                                <li>3日前〜当日までのキャンセルは<span class="font-bold">ピッチ使用料金の100％</span></li>
+                            </ol>
+                            <p class="text-[11px] text-gray-800 leading-relaxed font-bold">
+                                ※但し、雨・雪等の天候不良により、施設側が使用不可能と判断した場合を除きます。
+                            </p>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 border-l-4 border-shiga-blue pl-2 mb-3">ピッチの予約方法（お申し込み）</h4>
+                            <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-2 mb-4">
+                                <li>2ヶ月前からの予約となります。</li>
+                                <li>2ヶ月以上前の予約については、事務局までお電話（0748-77-5170）で問い合わせてください。</li>
+                                <li>予約は、1時間単位の面貸しとなります。</li>
+                                <li>
+                                    <a href="https://select-type.com/rsv/?id=CaWEHFt78Mg&c_id=110280&w_flg=1" target="_blank" class="inline-block bg-[#005bac] hover:bg-blue-700 text-white text-xs py-1.5 px-3 rounded shadow transition mr-2">フットサルコート（ピッチ）を予約する</a>
+                                    か電話（0748-77-5170）、受付カウンターにて受け付けています。<br>
+                                    <span class="text-xs text-gray-500">（QRコードをスマートフォン等から読み取ると予約ページに移動できます）</span>
+                                </li>
+                                <li>SHIGA League・大会・ナイターリーグ開催等により、予約が埋まっている時間帯は、予約を受付することができません。</li>
+                                <li>対戦相手・練習試合募集などのマッチメイクをご使用になりたい場合もご連絡して下さい。</li>
+                            </ol>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 border-l-4 border-shiga-blue pl-2 mb-3">レンタル用品</h4>
+                            <div class="w-full max-w-sm mb-3">
+                                <table class="w-full text-sm border-collapse border border-gray-300">
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-3 border border-gray-300 bg-gray-50 text-center font-bold w-1/2">シューズ</td>
+                                            <td class="p-3 border border-gray-300 text-center">400 円 (税込)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-xs text-gray-700 leading-relaxed">
+                                ※デジタイマー(電光掲示板)をご使用の方は、お申し出下さい。無料にてお貸ししています。<br>
+                                (雨天の場合は、お断りしております)
+                            </p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ==================== PAGE: 施設案内 (FACILITIES) ==================== -->
+                <div id="page-facilities" class="page-section hidden space-y-8">
+                    
+                    <!-- 観覧席について -->
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
+                            観覧席について
+                        </div>
+                        
+                        <p class="text-sm text-gray-800 leading-relaxed mb-4">
+                            AピッチとBピッチのゴール裏に観覧席（屋根付き）があります。<br>
+                            (最大収容人数：約100名)
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                            <div class="w-full sm:w-1/2 rounded-xl overflow-hidden shadow-sm border border-gray-200 relative bg-gray-100 h-48">
+                                <img src="photo/seat1.jpg" loading="lazy" alt="観覧席 外観" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                                <div class="absolute inset-0 flex items-center justify-center text-gray-400 opacity-50 font-bold text-xs -z-10">PHOTO 1</div>
+                            </div>
+                            <div class="w-full sm:w-1/2 rounded-xl overflow-hidden shadow-sm border border-gray-200 relative bg-gray-100 h-48">
+                                <img src="photo/seat2.jpg" loading="lazy" alt="観覧席 内観" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                                <div class="absolute inset-0 flex items-center justify-center text-gray-400 opacity-50 font-bold text-xs -z-10">PHOTO 2</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-sm text-gray-800 leading-relaxed">
+                            <p>試合の観戦や休憩にご利用ください。</p>
+                            <p>観覧席は、全面禁煙です。</p>
+                            <p>喫煙は、喫煙コーナーにてお願いします。</p>
+                            <p>ご協力をお願い致します。</p>
+                        </div>
+                    </section>
+
+                    <!-- 喫煙場所について -->
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
+                            喫煙場所について
+                        </div>
+
+                        <p class="text-sm text-gray-800 leading-relaxed mb-4">
+                            喫煙コーナーをAピッチの道路側に設置しました。
+                        </p>
+
+                        <div class="w-full max-w-sm rounded-xl overflow-hidden shadow-sm border border-gray-200 relative bg-gray-100 h-48 mb-2">
+                            <img src="photo/sa.jpg" loading="lazy" alt="喫煙コーナー" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                            <div class="absolute inset-0 flex items-center justify-center text-gray-400 opacity-50 font-bold text-xs -z-10">PHOTO</div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-6">↑喫煙はこの喫煙エリア内でお願いします。</p>
+
+                        <div class="space-y-4 text-sm text-gray-800 leading-relaxed">
+                            <p>子ども達や喫煙しない方々の健康を守るため、喫煙エリア以外での喫煙・ポイ捨て等を一切禁止致します。<br>
+                            この喫煙コーナーは、滋賀県フットサル連盟主催のリーグ開催時のみとします。</p>
+
+                            <p class="font-bold text-base mt-4">フットサルを楽しむみんながマナーを守り、喫煙しない方も心地よく、子ども達も安心してフットサルが楽しめるように分煙にご協力をお願い致します。</p>
+                        </div>
+                    </section>
+
+                    <!-- 人工芝の安全性について -->
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center text-center px-4 sm:px-8">
+                            甲賀高分子スタジアムで使用している『ゴムチップ入り人工芝（ハイブリッドターフ）』の安全性について
+                        </div>
+
+                        <p class="text-sm text-gray-800 leading-relaxed mb-6">
+                            一部メディアで報道されております『米政府による人工芝とがんの関連性についての調査開始』に関連しまして、甲賀高分子スタジアムで使用している『ゴムチップ入り人工芝（株式会社 住ゴム産業：ハイブリッドターフ）』の安全性について、以下の通りお知らせいたします。
+                        </p>
+
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 mb-2">報道内容</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">
+                                米国政府機関が、ゴムチップ入り人工芝の人体に対する影響（発がん性）について調査を開始すると発表しました。これは、米国内で人工芝の合成繊維、充填物に使用されるゴムチップ（タイヤリサイクル品）とがんとの因果関係の可能性についての声が上がった事を受けたものです。
+                            </p>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="font-bold text-gray-800 mb-2">甲賀高分子スタジアムで使用しているゴムチップ入り人工芝の安全性について</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">
+                                甲賀高分子スタジアムで使用しているゴムチップ入り人工芝（株式会社 住ゴム産業：ハイブリッドターフ）は、ポリエチレン製の人工芝(ヤーン)にゴムチップ、砂を充填することにより構成しています。これらいずれの素材につきましても、鉛など発がん性のある有害物質の溶出及び人体への影響については、第三者機関による試験で安全性を確認しております。従って健康への影響は無いと認識しておりますが、今後も安全性の確認を継続してまいります。
+                            </p>
+                        </div>
+
+                        <div class="pt-4 text-sm text-gray-600">
+                            《参考》 <a href="https://sports.dunlop.co.jp/sportsturf/" target="_blank" class="text-shiga-blue hover:underline ml-2">株式会社 住ゴム産業　ホームページ</a>
+                        </div>
+                    </section>
+                </div>
+
+
+                <!-- ==================== PAGE: アクセス (ACCESS) ==================== -->
+                <div id="page-access" class="page-section hidden space-y-6">
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
+                            <i class="fas fa-map-marked-alt mr-2"></i>アクセス（地図）
+                        </div>
+
+                        <!-- 基本情報テーブル -->
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
+                                <tbody>
+                                    <tr>
+                                        <th class="p-3 border border-gray-200 bg-gray-50 text-gray-700 font-bold md:w-1/4 text-left">所在地</th>
+                                        <td class="p-3 border border-gray-200 text-gray-700 leading-relaxed">
+                                            〒520-3113<br>滋賀県湖南市石部北一丁目２−１６７７ 甲賀高分子スタジアム
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-3 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-left">TEL</th>
+                                        <td class="p-3 border border-gray-200 text-gray-700">0748-77-5170</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-3 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-left">FAX</th>
+                                        <td class="p-3 border border-gray-200 text-gray-700">0748-77-5171</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-3 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-left">E-mail</th>
+                                        <td class="p-3 border border-gray-200 text-gray-700 font-bold">
+                                            <a href="mailto:futsal@mx.bw.dream.jp" class="text-shiga-blue hover:underline">futsal@mx.bw.dream.jp</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-3 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-left">Instagram</th>
+                                        <td class="p-3 border border-gray-200 text-gray-700">
+                                            <a href="https://www.instagram.com/ishibe.yk/" target="_blank" class="text-pink-600 hover:underline flex items-center mb-1 font-bold">
+                                                <i class="fab fa-instagram mr-1.5 text-xl"></i>@ishibe.yk
+                                            </a>
+                                            <p class="text-[11px] text-gray-500">最新情報や施設の様子はInstagramで発信しています</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Google Maps Embed -->
+                        <div class="w-full h-80 rounded-xl overflow-hidden border border-gray-200 shadow-sm mb-6">
+                            <!-- 修正：loading="lazy" を追加 -->
+                            <iframe src="https://maps.google.co.jp/maps?output=embed&q=甲賀高分子スタジアム 滋賀県湖南市石部北一丁目２−１６７７" loading="lazy" class="w-full h-full" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <!-- 交通アクセス案内テーブル -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
+                                <tbody>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold md:w-1/4 text-center">電車をご利用の方</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 font-bold">
+                                            石部駅（JR草津線）から徒歩約１０分
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center align-top">車をご利用の方</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 space-y-6">
+                                            
+                                            <div>
+                                                <h5 class="font-bold text-gray-800 mb-2 flex items-center">
+                                                    <i class="fas fa-car mr-2 text-shiga-blue"></i>◎ 草津・守山・栗東IC（名神高速）方面からの場合
+                                                </h5>
+                                                <p class="text-sm text-gray-700 leading-relaxed mb-3 pl-6">
+                                                    国道１号線を水口方向に進行し、「石部口」交差点を右折し、一つ目の交差点を右折する。
+                                                </p>
+                                                <div class="flex items-center gap-3 pl-6">
+                                                    <div class="w-20 h-24 bg-gray-100 border rounded flex items-center justify-center overflow-hidden shrink-0 shadow-sm relative">
+                                                        <img src="photo/guide.jpg" loading="lazy" alt="石部口看板" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                                                        <span class="hidden text-[8px] text-gray-400 font-bold">看板画像</span>
+                                                    </div>
+                                                    <p class="text-xs text-gray-600 font-bold">← 「石部口」交差点手前にあるこの看板が目印です</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="border-t pt-4">
+                                                <h5 class="font-bold text-gray-800 mb-2 flex items-center">
+                                                    <i class="fas fa-car mr-2 text-shiga-green"></i>◎ 甲賀・水口・甲南IC（新名神高速）方面からの場合
+                                                </h5>
+                                                <p class="text-sm text-gray-700 leading-relaxed pl-6">
+                                                    国道１号線を草津方向に進行し、「石部口」交差点を左折し、一つ目の交差点を右折する。
+                                                </p>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+
+                <!-- ==================== PAGE: ビジョン広告 (VISION) ==================== -->
+                <div id="page-vision" class="page-section hidden space-y-6">
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
+                            甲賀高分子スタジアム　L ビジョン広告会員制度について
+                        </div>
+                        
+                        <p class="text-sm font-bold text-gray-800 leading-relaxed mb-4">
+                            滋賀県フットサル連盟は、『甲賀高分子スタジアム』を応援していただける 甲賀高分子スタジアム Ｌビジョン広告会員制度 を導入します。
+                        </p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                            滋賀にフットサル文化を創り、定着させた滋賀県フットサル連盟の運営する『甲賀高分子スタジアム』の施設及び事業（イベント）の更なる充実を図るためのＬビジョン広告会員制度です。<br>皆様のご支援とご協力をお願い致します。
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 mb-2">
+                            <div class="w-full sm:w-1/2 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                                <img src="photo\vision1.jpg" loading="lazy" alt="ビジョン設置画像1" class="w-full h-auto object-cover aspect-video" onerror="this.style.display='none'">
+                            </div>
+                            <div class="w-full sm:w-1/2 rounded-xl overflow-hidden shadow-sm border border-gray-200 relative bg-black flex items-center justify-center">
+                                <!-- 動画プレイヤー -->
+                                <video src="photo\vision.mov" controls class="w-full h-auto object-cover aspect-video"></video>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-8 text-center">《甲賀高分子スタジアムに新たに設置したＬビジョンです》</p>
+
+                       
+                        <div class="mb-8">
+                            <h4 class="font-bold text-gray-800 border-b-2 border-gray-800 pb-1 mb-3 text-sm">募集するＬビジョン広告会員について</h4>
+                            <div class="overflow-x-auto mb-2">
+                                <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
+                                    <thead>
+                                        <tr class="table-th text-center">
+                                            <th class="p-3 border border-gray-200 w-1/4">会員の種類</th>
+                                            <th class="p-3 border border-gray-200 text-left">会費および内容・特典等</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-bold bg-gray-50 text-center">A協賛</td>
+                                            <td class="p-3 border border-gray-200 text-gray-700">
+                                                <p class="mb-1">会費（年間）：300,000円＋ユニフォーム</p>
+                                                <p>1. ホームページに企業名または店名の掲載とトップページにバナー（広告・宣伝）を掲載させていただきます。</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-bold bg-gray-50 text-center">B協賛</td>
+                                            <td class="p-3 border border-gray-200 text-gray-700">
+                                                <p class="mb-1">会費（年間）：100,000円</p>
+                                                <p>1. ホームページに企業名または店名の掲載とトップページにバナー（広告・宣伝）を掲載させていただきます。</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 border border-gray-200 font-bold bg-gray-50 text-center">C協賛</td>
+                                            <td class="p-3 border border-gray-200 text-gray-700">
+                                                <p>会費（年間）：50,000円</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-xs text-gray-500">※会費は１年間の金額です。</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="font-bold text-gray-800 border-b-2 border-gray-800 pb-1 mb-3 text-sm">Ｌビジョン広告効果について</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">伝えたい広告（宣伝等）を甲賀高分子スタジアムに来場した方々に確実に伝えます。</p>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h4 class="font-bold text-gray-800 border-b-2 border-gray-800 pb-1 mb-3 text-sm">広告内容について</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">人材確保募集、観光地のＰＲ、飲食店の案内、塾の案内、自動車販売店の広告、等</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="font-bold text-gray-800 border-b-2 border-gray-800 pb-1 mb-3 text-sm">Ｌビジョン広告会員資格について</h4>
+                            <ol class="list-decimal pl-5 text-sm text-gray-600 space-y-2">
+                                <li>甲賀高分子スタジアム Ｌビジョン広告会員制度に賛同し、協力して頂ける企業や団体（チーム）並びに個人に限ります。</li>
+                                <li>反社会的な企業や団体（チーム）並びに個人の入会は出来ません。</li>
+                            </ol>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="font-bold text-gray-800 border-b-2 border-gray-800 pb-1 mb-3 text-sm">お申し込みについて</h4>
+                            <p class="text-sm font-bold text-gray-800 mb-4">
+                                甲賀高分子スタジアム Ｌビジョン広告会員制度の詳しい内容の確認・ご相談等は、滋賀県フットサル連盟までお問い合わせしてください。
+                            </p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="javascript:void(0);" onclick="showPage('contact')" class="inline-block bg-shiga-blue hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-xs shadow-md transition">
+                                <i class="fas fa-envelope mr-1.5"></i>お問い合わせフォームへ
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ==================== PAGE: 大会・リーグ情報 (TOURNAMENTS) ==================== -->
+                <div id="page-tournaments" class="page-section hidden space-y-6">
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-black text-shiga-blue mb-4 pb-2 border-b"><i class="fas fa-trophy mr-2"></i>大会・リーグ情報</h3>
+                        
+                        <!-- Notion 埋め込み iframe -->
+                        <div class="w-full rounded-xl overflow-hidden border border-gray-200 shadow-sm mb-6 bg-gray-50">
+                            <!-- 修正：loading="lazy" を追加 -->
+                            <iframe src="https://chalk-dugout-319.notion.site/ebd//b4c5eea1ee994361a89e58dbec80fdee" loading="lazy" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+                        </div>
+
+                        <div class="p-4 border rounded-xl">
+                            <h4 class="font-bold text-gray-800 text-xs mb-2">🤝 練習試合・マッチメイクについて</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                滋賀県フットサル連盟では、加盟チーム同士や一般チームの対戦マッチメイク、練習試合（テストマッチ）の実施についても仲介やコート手配が可能です。対戦相手をお探しの方もお気軽にご連絡ください！
+                            </p>
+                        </div>
+
+                        <div class="pt-4 border-t text-center mt-6">
+                            <a href="javascript:void(0);" onclick="showPage('contact')" class="inline-block bg-shiga-blue hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-xs shadow-md transition">
+                                <i class="fas fa-phone mr-1.5"></i>大会・リーグについて問い合わせる
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+
+                <!-- ==================== PAGE: 個人参加 (INDIVIDUAL) ==================== -->
+                <div id="page-individual" class="page-section hidden space-y-8">
+                    
+                    <!-- フットサル 個人参加 -->
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
+                            フットサル 個人参加のご案内
+                        </div>
+                        
+                        <p class="text-sm font-bold text-gray-800 leading-relaxed mb-4">
+                            フットサル 個人参加は、当日参加の個人及び、グループやチーム参加(5人以上) を対象に、4分のゲーム方式でフットサルを楽しんで頂きます。
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 mb-2">
+                            <div class="w-full sm:w-1/2 rounded-xl overflow-hidden shadow-sm border border-gray-200 relative bg-gray-100">
+                                <img src="photo\individual1.jpg" loading="lazy" alt="プレイ風景1" class="w-full h-40 object-cover" onerror="this.style.display='none'">
+                                <div class="absolute inset-0 flex items-center justify-center text-gray-400 opacity-50 font-bold text-xs -z-10">PHOTO 1</div>
+                            </div>
+                            <div class="w-full sm:w-1/2 rounded-xl overflow-hidden shadow-sm border border-gray-200 relative bg-gray-100">
+                                <img src="photo\individual2.jpg" loading="lazy" alt="プレイ風景2" class="w-full h-40 object-cover" onerror="this.style.display='none'">
+                                <div class="absolute inset-0 flex items-center justify-center text-gray-400 opacity-50 font-bold text-xs -z-10">PHOTO 2</div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-6 text-center">《こんな風にチームに分かれて、ゲーム形式でフットサルを楽しんで頂いています》</p>
+
+                        <!-- フットサル個人参加 表組み -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
+                                <tbody>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold md:w-1/5 text-center">開催日</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 leading-relaxed">
+                                            <p class="font-bold mb-3">木曜日 20:00 〜 22:00 (年齢制限なし)</p>
+                                            <p class="font-bold mb-1">土曜日 19:00 〜 21:00 (この時間帯は30歳以上の方と女性を対象にした個人参加です)</p>
+                                            <p class="font-bold mb-1">土曜日 21:00 〜 23:00 (年齢制限なし)</p>
+                                            <p class="text-xs mb-4">個人参加の開催日は、<a href="javascript:void(0);" onclick="showPage('calendar')" class="text-shiga-blue hover:underline font-bold">イベントカレンダー</a>で確認してください。</p>
+                                            
+                                            <p class="font-bold mb-1">※夜間利用については、以下を順守してください。</p>
+                                            <ul class="space-y-1 pl-1">
+                                                <li>① <span class="font-bold">２３時１５分</span>：照明OFF</li>
+                                                <li>② <span class="font-bold">２３時３０分</span>：全員退去、施設クローズ</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">参加費</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700">
+                                            <p class="mb-1">1回 1,100円（税込）</p>
+                                            <p class="text-red-600">予約した方で、当日にキャンセルした場合は、キャンセル料として1,100円を徴収致します</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">予約方法</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 text-sm">
+                                            <p class="mb-3">開催日の1週間前から予約を開始します。</p>
+                                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-3">
+                                                <a href="https://select-type.com/rsv/?id=CaWEHFt78Mg&c_id=110780&w_flg=1&mode=1" target="_blank" class="bg-[#005bac] hover:bg-blue-700 text-white text-xs py-2 px-6 rounded shadow transition text-center whitespace-nowrap">
+                                                    個人参加を予約する
+                                                </a>
+                                                <div class="flex items-center gap-3">
+                                                    <p class="text-sm leading-relaxed">か滋賀県フットサル連盟までお電話（0748-77-5170）で、当日開始1時間前までにお申し込み下さい。</p>
+                                                </div>
+                                            </div>
+                                            <p class="mb-1">但し、先着順にて定員に達した場合は締め切らせて頂きます。</p>
+                                            <p class="mb-1">電話でのお申し込みの際には、<span class="font-bold">お名前</span>と<span class="font-bold">携帯電話番号</span>をお伝え下さい。</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">特典</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700">
+                                            <p>1回参加につき1ポイント進呈。</p>
+                                            <p>10ポイントで1回無料になります。</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- ウォーキングフットボール 個人参加 -->
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
+                            ウォーキングフットボール 個人参加のご案内
+                        </div>
+                        
+                        <div class="mb-6">
+                            <p class="text-sm font-bold text-gray-800 leading-relaxed">
+                                ウォーキングフットボール 個人参加は、当日参加の個人及び、グループやチーム参加の方を対象に、ゲーム方式でウォーキングフットボールを楽しんで頂きます。
+                            </p>
+                        </div>
+
+                        <!-- ウォーキングフットボール 表組み -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
+                                <tbody>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold md:w-1/5 text-center">開催日</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 leading-relaxed">
+                                            <p class="font-bold mb-3">土曜日 17:00 〜 19:00</p>
+                                            <p class="text-xs mb-4">個人参加の開催日は、<a href="javascript:void(0);" onclick="showPage('calendar')" class="text-shiga-blue hover:underline font-bold">イベントカレンダー</a>で確認してください。</p>
+                                            
+                                            <p class="font-bold mb-1">※夜間利用については、以下を順守してください。</p>
+                                            <ul class="space-y-1 pl-1">
+                                                <li>① <span class="font-bold">２３時１５分</span>：照明OFF</li>
+                                                <li>② <span class="font-bold">２３時３０分</span>：全員退去、施設クローズ</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">参加費</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700">
+                                            <p class="mb-1">参加費用：1回 500円（税込）</p>
+                                            <p class="text-red-600">予約した方で、当日にキャンセルした場合は、キャンセル料として500円を徴収致します</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">目的</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 text-sm leading-relaxed space-y-2">
+                                            <p>滋賀県フットサル連盟設立から31年目が経過し、リーグ参加者も高齢化が進んできました。<br>競技志向から、エンジョイ志向（楽しくフットサルする）の選択も増やしていきたい。</p>
+                                            <ul class="list-disc pl-5">
+                                                <li>参加選手を、安全第一に考えて、ケガをしない（させない）フットサルを目指す！</li>
+                                                <li>フットサルを引退した選手を、ピッチに戻したい！</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">競技規則</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 text-sm leading-relaxed">
+                                            <p class="font-bold mb-2">【ウォーキングフットボールの競技規則】</p>
+                                            <ol class="list-decimal pl-5 space-y-1.5">
+                                                <li>全ての選手はウォーキング（歩き）でプレーしなければなりません。ウォーキングとは「片方の足が常に地面に接地している状態で歩くこと」と定義します。</li>
+                                                <li>オフサイドはありません。</li>
+                                                <li>チーム人数は6人制で、交代ゾーンから自由に交代可能です。</li>
+                                                <li>試合時間は前後半各10分ですが、試合時間は自由に設定とします。</li>
+                                                <li>ピッチマネージャーを1名または2名を配置します。ピッチマネージャーとは楽しく試合を進める進行役です。</li>
+                                                <li>反則の判定は、「セルフジャッジ（選手の判断）」で行います。セルフジャッジが困難な場合は、ピッチマネージャーが判定をします。</li>
+                                                <li>ボールの全体がタッチラインを越えたときは、その場所から相手選手のキックイン（蹴り入れる）またはロールイン（投げ入れる）によってプレーを再開します。</li>
+                                                <li>FPは、相手がボールをキープしている時はボールを取らない。”前をふさぐだけ”とします。</li>
+                                                <li>リスタート（キックインやコーナーキック等）からの直接ゴールはゴールとはなりません。</li>
+                                                <li>シュートが相手選手に当ってゴールした場合はゴールとはなりません。</li>
+                                            </ol>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">反則</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 text-sm leading-relaxed">
+                                            <p class="font-bold mb-2">【ウォーキングフットボールの反則】</p>
+                                            <ol class="list-decimal pl-5 space-y-3">
+                                                <li>
+                                                    選手が次の反則を行った場合、相手チームに間接フリーキックが与えられます。
+                                                    <ul class="list-disc pl-5 mt-1 space-y-0.5">
+                                                        <li>走る。</li>
+                                                        <li>ヘディングする。</li>
+                                                        <li>ゴールの高さを超えてボールを蹴るまたは投げる。</li>
+                                                        <li>相手にスライディング（スライディングタックル）する。</li>
+                                                        <li>相手にチャージ（ぶつかる/押さえる）する。</li>
+                                                        <li>倒れたままでプレーをする。</li>
+                                                        <li>相手が保持しているボールを奪う。</li>
+                                                        <li>6秒を超えてボールを保持する。</li>
+                                                        <li>ゴールキーパーがスローするのを妨げる。</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    ゴールキーパーが次の反則を行った場合、相手チームに間接フリーキックが与えられます。
+                                                    <ul class="list-disc pl-5 mt-1 space-y-0.5">
+                                                        <li>ペナルティーエリア内で、6秒を超えてボールを保持したり静止させたりする。</li>
+                                                        <li>ボールをパスしたばかりの同チームの選手から直接ボールを受け取る。</li>
+                                                        <li>ペナルティーエリアからでてはいけない</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    選手（ゴールキーパー含む）が次の反則を行った場合、相手チームにペナルティーキックが与えられます。
+                                                    <ul class="list-disc pl-5 mt-1 space-y-0.5">
+                                                        <li>守備側の選手が故意に自陣のペナルティーエリアに入る。</li>
+                                                        <li>ゴールキーパーが故意に自陣のペナルティーエリアを出る。</li>
+                                                        <li>ゴールキーパーが両足が地面から離れた状態でボールに跳びついてセーブする。</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-4 border border-gray-200 bg-gray-50 text-gray-700 font-bold text-center">予約方法</th>
+                                        <td class="p-4 border border-gray-200 text-gray-700 text-sm">
+                                            <p class="mb-3">開催日の1週間前から予約を開始します。</p>
+                                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-3">
+                                                <a href="https://select-type.com/rsv/?id=CaWEHFt78Mg&c_id=110780&w_flg=1&mode=1" target="_blank" class="bg-[#005bac] hover:bg-blue-700 text-white text-xs py-2 px-6 rounded shadow transition text-center whitespace-nowrap">
+                                                    ウォーキングフットボール<br class="hidden sm:block">個人参加を予約する
+                                                </a>
+                                                <div class="flex items-center gap-3">
+                                                    <p class="text-sm leading-relaxed">か滋賀県フットサル連盟までお電話（0748-77-5170）で、当日開始1時間前までにお申し込み下さい。</p>
+                                                </div>
+                                            </div>
+                                            <p class="mb-1">但し、先着順にて定員に達した場合は締め切らせて頂きます。</p>
+                                            <p class="mb-1">電話でのお申し込みの際には、<span class="font-bold">お名前</span>と<span class="font-bold">携帯電話番号</span>をお伝え下さい。</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ==================== PAGE: イベントカレンダー (CALENDAR) ==================== -->
+                <div id="page-calendar" class="page-section hidden space-y-6">
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
+                            <i class="fas fa-calendar-alt mr-2"></i>イベントカレンダー
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">
+                            滋賀県フットサル連盟の各種イベント、リーグ戦、大会、個人参加のスケジュールです。<br>
+                            ※詳細な空き枠状況などは随時オンライン予約画面をご確認ください。
+                        </p>
+                        
+                        <!-- Google Calendar Embed -->
+                        <div class="w-full rounded-xl overflow-hidden border border-gray-200 shadow-sm calendar-container bg-gray-50">
+                            <!-- 修正：loading="lazy" を追加 -->
+                            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTokyo&src=c2hpZ2EuZnV0c2FsLmZlZGVyYXRpb25AZ21haWwuY29t&src=a3Q5NDE5MjI4cXJuZWIzOTZtbWM1cWthZW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=bjViZm5yZzFndXNrajIwMDlvbHBiaWFzZWNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23039BE5&color=%23D50000&color=%2333B679" loading="lazy" style="border-width:0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+                        </div>
+
+                    </section>
+                </div>
+
+
+                <!-- ==================== PAGE: お問い合わせ (CONTACT) ==================== -->
+                <div id="page-contact" class="page-section hidden space-y-6">
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-black text-shiga-blue mb-4 pb-2 border-b"><i class="fas fa-envelope mr-2"></i>お問い合わせ</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-6">
+                            コート空き予約確認、ビジョン広告など、どのようなことでもお気軽にお問い合わせください。
+                        </p>
+
+                        <!-- Contact Form -->
+                        <form id="contact-form" class="space-y-4 text-xs" onsubmit="handleContactSubmit(event)">
+                            <div>
+                                <label class="font-bold text-gray-700 block mb-1">お名前 (代表者) <span class="text-red-500 font-normal">*必須</span></label>
+                                <input type="text" required class="w-full border p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-shiga-blue" placeholder="山田 太郎">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="font-bold text-gray-700 block mb-1">メールアドレス <span class="text-red-500 font-normal">*必須</span></label>
+                                    <input type="email" required class="w-full border p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-shiga-blue" placeholder="example@domain.com">
+                                </div>
+                                <div>
+                                    <label class="font-bold text-gray-700 block mb-1">電話番号</label>
+                                    <input type="tel" class="w-full border p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-shiga-blue" placeholder="090-0000-0000">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="font-bold text-gray-700 block mb-1">お問い合わせ項目</label>
+                                <select class="w-full border p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-shiga-blue bg-white">
+                                    <option>コート予約について</option>
+                                    <option>大会・リーグ戦について</option>
+                                    <option>ビジョン広告への掲載相談</option>
+                                    <option>審判・運営スタッフ登録への応募</option>
+                                    <option>その他お問い合わせ</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="font-bold text-gray-700 block mb-1">お問い合わせ内容 <span class="text-red-500 font-normal">*必須</span></label>
+                                <textarea required rows="5" class="w-full border p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-shiga-blue" placeholder="メッセージ・ご要望をご入力ください。"></textarea>
+                            </div>
+
+                            <!-- Success/Error Notification Modal-like Inline -->
+                            <div id="form-notification" class="hidden p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 font-bold mb-2">
+                                <i class="fas fa-check-circle mr-1.5"></i>お問い合わせを送信しました！事務局より折り返しご連絡させていただきますっ♪
+                            </div>
+
+                            <button type="submit" class="w-full bg-shiga-blue hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow transition text-sm">
+                                <i class="fas fa-paper-plane mr-1.5"></i>この内容で送信する
+                            </button>
+                        </form>
+                    </section>
+
+                    <!-- 連盟概要 -->
+                    <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-800 border-l-4 border-shiga-blue pl-2 mb-4 text-xs">滋賀県フットサル連盟 組織概要</h4>
+                        <table class="w-full text-[11px] text-left border-collapse">
+                            <tr class="border-b"><th class="py-2.5 text-gray-500 font-bold w-1/3">名称</th><td class="py-2.5 text-gray-700">滋賀県フットサル連盟 (SHIGA FUTSAL FEDERATION)</td></tr>
+                            <tr class="border-b"><th class="py-2.5 text-gray-500 font-bold">所在地</th><td class="py-2.5 text-gray-700">〒520-3113 滋賀県湖南市石部北一丁目２−１６７７（甲賀高分子スタジアム内）</td></tr>
+                            <tr class="border-b"><th class="py-2.5 text-gray-500 font-bold">電話 / FAX</th><td class="py-2.5 text-gray-700">0748-77-5170　/　0748-77-5171</td></tr>
+                            <tr class="border-b"><th class="py-2.5 text-gray-500 font-bold">E-mail</th><td class="py-2.5 text-gray-700"><a href="mailto:futsal@mx.bw.dream.jp" class="text-shiga-blue hover:underline">futsal@mx.bw.dream.jp</a></td></tr>
+                        </table>
+                    </section>
+                </div>
+
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="lg:w-1/4 space-y-6">
+                <div class="space-y-3">
+                    <a href="javascript:void(0);" onclick="showPage('vision')" class="block bg-white p-5 rounded-2xl shadow-md border-2 border-shiga-blue group overflow-hidden relative">
+                        <div class="relative z-10">
+                            <p class="text-[10px] font-bold text-shiga-blue opacity-60 uppercase tracking-widest">Ad Member</p>
+                            <h4 class="text-lg font-black leading-tight text-gray-800">Lビジョン広告<br>会員募集中！</h4>
+                        </div>
+                        <i class="fas fa-tv absolute -right-2 -bottom-2 text-6xl text-shiga-blue opacity-15 group-hover:scale-110 group-hover:opacity-25 transition-all duration-300"></i>
+                    </a>
+                </div>
+
+                <!-- Sponsors -->
+                <div class="pt-4 space-y-4">
+                    <div class="flex items-center justify-between pl-2">
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Official Sponsors</p>
+                        <div class="h-[1px] bg-gray-200 flex-1 ml-4"></div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        
+                        <!-- 1. Koga Polymer -->
+                        <a href="https://www.koga-polymer.co.jp/" target="_blank" class="sponsor-banner flex items-center justify-center h-16 bg-white rounded-xl p-3 shadow-sm overflow-hidden">
+                            <!-- 修正：loading="lazy" を追加 -->
+                            <img src="photo\koka_logo.png" loading="lazy" alt="Koga Polymer" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                            <div class="hidden text-xs font-black text-shiga-blue uppercase font-sans">Koga Polymer</div>
+                        </a>
+                        
+                        <!-- 2. CEREZO OSAKA -->
+                        <a href="https://www.cerezo.jp/" target="_blank" class="sponsor-banner flex items-center justify-center h-16 bg-white rounded-xl p-3 shadow-sm overflow-hidden">
+                            <!-- 修正：loading="lazy" を追加 -->
+                            <img src="photo\logo_row.svg" loading="lazy" alt="CEREZO OSAKA" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                            <div class="hidden text-xs font-black text-pink-600 uppercase font-sans">CEREZO OSAKA</div>
+                        </a>
+                       
+                        <!-- 3. Koyama Clinic -->
+                        <a href="https://www.koyama.clinic/" target="_blank" class="sponsor-banner flex items-center justify-center h-16 bg-white rounded-xl p-3 shadow-sm overflow-hidden">
+                            <!-- 修正：loading="lazy" を追加 -->
+                            <img src="photo\sitelogo.jpg" loading="lazy" alt="Koyama Clinic" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                            <div class="hidden text-xs font-black text-emerald-600 uppercase font-sans">Koyama Clinic</div>
+                        </a>
+                        
+                        <!-- And more... -->
+                        <a href="javascript:void(0);" class="sponsor-banner flex items-center justify-center h-16 bg-white rounded-xl p-3 shadow-sm opacity-60">
+                            <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest italic">And more...</div>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Album Slider Section -->
+    <section class="mt-12 bg-white py-10 border-t border-b border-gray-100 overflow-hidden">
+        <div class="container mx-auto px-4 mb-6 flex items-center justify-between">
+            <h3 class="text-lg font-black text-gray-800 flex items-center">
+                <i class="fas fa-camera-retro mr-2 text-shiga-blue"></i>
+                PHOTO GALLERY
+            </h3>
+        </div>
+        
+        <div class="relative w-full overflow-hidden">
+            <div class="slider-track">
+                
+                <!-- ギャラリー画像の loading="lazy" 追加 -->
+                <div class="slide">
+                    <img src="photo\DSCF8532.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 1" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 1</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF2359.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 2" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 2</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF2807.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 3" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 3</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF8636.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 4" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 4</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF1733.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 5" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 5</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF2365.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 1" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 1</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF0991.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 2" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 2</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF2385.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 3" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 3</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF2429.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 4" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 4</span>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo\DSCF3235.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 5" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
+                        <i class="fas fa-image text-3xl mb-1"></i><span class="text-[10px] font-mono">PHOTO 5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                         <div class="w-12 h-12 flex items-center justify-center overflow-hidden">
+                            <img src="photo/sfa.png" loading="lazy" alt="滋賀県フットサル連盟 ロゴ" class="max-w-full max-h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=100'">
+                         </div>
+                         <h5 class="text-base font-black tracking-tighter uppercase leading-none">Shiga Futsal<br>Federation</h5>
+                    </div>
+                    <div class="text-[11px] text-gray-400 space-y-2 mb-6">
+                        <p class="font-bold text-gray-200">滋賀県フットサル連盟 事務局</p>
+                        <p>〒520-3113 滋賀県湖南市石部北一丁目２−１６７７<br>甲賀高分子スタジアム</p>
+                        <p>TEL: 0748-77-5170 / FAX: 0748-77-5171</p>
+                        <p>E-mail: <a href="mailto:futsal@mx.bw.dream.jp" class="hover:text-white underline">futsal@mx.bw.dream.jp</a></p>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://www.instagram.com/ishibe.yk/" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-600 transition shadow-lg animate-pulse">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://x.com/ShigaFutsal" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-white hover:text-black transition">
+                            <i class="fab fa-x-twitter text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="font-black mb-6 text-shiga-green uppercase tracking-widest text-[10px]">Information</h6>
+                    <ul class="text-xs text-gray-400 space-y-3 font-bold">
+                        <li><a href="javascript:void(0);" onclick="showPage('guide')" class="hover:text-white transition flex items-center"><i class="fas fa-money-bill-wave mr-2 w-4 text-shiga-green"></i>ご利用案内(料金)</a></li>
+                        <li><a href="javascript:void(0);" onclick="showPage('facilities')" class="hover:text-white transition flex items-center"><i class="fas fa-futbol mr-2 w-4 text-shiga-green"></i>施設案内</a></li>
+                        <li><a href="javascript:void(0);" onclick="showPage('access')" class="hover:text-white transition flex items-center"><i class="fas fa-map-marked-alt mr-2 w-4 text-shiga-green"></i>アクセス(地図)</a></li>
+                        <li><a href="javascript:void(0);" onclick="showPage('contact')" class="hover:text-white transition flex items-center"><i class="fas fa-phone mr-2 w-4 text-shiga-green"></i>お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="font-black mb-6 text-shiga-green uppercase tracking-widest text-[10px]">Contents</h6>
+                    <ul class="text-xs text-gray-400 space-y-3 font-bold">
+                        <li><a href="javascript:void(0);" onclick="showPage('home')" class="hover:text-white transition">更新情報</a></li>
+                        <li><a href="javascript:void(0);" onclick="showPage('calendar')" class="hover:text-white transition">イベントカレンダー</a></li>
+                        <li><a href="javascript:void(0);" onclick="showPage('tournaments')" class="hover:text-white transition">リーグ情報・大会情報</a></li>
+                        <li><a href="javascript:void(0);" onclick="showPage('individual')" class="hover:text-white transition">個人参加 (個サル)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-[10px] text-gray-600 font-bold uppercase tracking-widest">
+                <p>&copy; 2026 Shiga Futsal Federation. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- スライドショー＆ルーティングJavaScript -->
+    <script>
+        // SPAページ切替関数
+        function showPage(pageId) {
+            // 全てのメインコンテンツセクションを非表示にする
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // 指定されたセクションを表示
+            const activeSection = document.getElementById('page-' + pageId);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+            }
+
+            // サイドバーメニューのアクティブ表示切替
+            const menuItems = document.querySelectorAll('.side-menu-item, .side-submenu-item');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            const activeMenu = document.getElementById('menu-' + pageId);
+            if (activeMenu) {
+                activeMenu.classList.add('active');
+            }
+
+            // スムーズスクロール
+            // PCの場合はトップへ、スマホの場合はメインコンテンツの先頭へ
+            if (window.innerWidth < 1024) { 
+                const mainElement = document.getElementById('main-content');
+                const headerElement = document.getElementById('main-header');
+                
+                if(mainElement) {
+                     const headerHeight = headerElement ? headerElement.offsetHeight : 80; 
+                     const elementPosition = mainElement.getBoundingClientRect().top;
+                     const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; 
+                     
+                     window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                     });
+                }
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // モバイルメニューを閉じる
+            closeMobileMenu();
+        }
+
+        // モバイルナビトグル制御
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+
+        function openMobileMenu() {
+            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            menuOverlay.classList.add('opacity-100', 'pointer-events-auto');
+        }
+
+        function closeMobileMenu() {
+            menuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        if (menuBtn) menuBtn.addEventListener('click', openMobileMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMobileMenu);
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', (e) => {
+                if (e.target === menuOverlay) closeMobileMenu();
+            });
+        }
+
+        // お問い合わせフォーム擬似送信処理
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const notification = document.getElementById('form-notification');
+            if (notification) {
+                notification.classList.remove('hidden');
+                document.getElementById('contact-form').reset();
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 8000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // スライドショーの制御
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            slides.forEach(slide => {
+                const img = slide.querySelector('img');
+                if (img) {
+                    const observer = new MutationObserver((mutations) => {
+                        mutations.forEach((mutation) => {
+                            if (mutation.attributeName === 'src' && img.getAttribute('src') !== '') {
+                                img.classList.remove('hidden');
+                            }
+                        });
+                    });
+                    observer.observe(img, { attributes: true });
+
+                    if (img.getAttribute('src') !== '') {
+                        img.classList.remove('hidden');
+                    }
+                }
+            });
+
+            // クロスディゾルブ（5秒）
+            function nextSlide() {
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }
+
+            if (slides.length > 1) {
+                setInterval(nextSlide, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
