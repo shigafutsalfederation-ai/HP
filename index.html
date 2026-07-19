@@ -17,7 +17,7 @@
             --shiga-dark-green: #006400;
         }
         
-        /* スマホなどのスクロールを滑らかにする */
+        /* スマホなどのスクロールを滑らかにする魔法 */
         html {
             scroll-behavior: smooth;
         }
@@ -132,7 +132,7 @@
         /* Google Calendar Responsive */
         .calendar-container {
             position: relative;
-            padding-bottom: 75%; /* Aspect ratio for calendar */
+            padding-bottom: 75%;
             height: 0;
             overflow: hidden;
         }
@@ -145,7 +145,7 @@
         }
         @media (min-width: 768px) {
             .calendar-container {
-                padding-bottom: 600px; /* Fixed height for desktop */
+                padding-bottom: 600px;
             }
         }
     </style>
@@ -233,37 +233,30 @@
         
         <!-- スライドコンテナ -->
         <div class="absolute inset-0 z-0">
-            <!-- Slide 1 -->
             <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100 bg-gradient-to-tr from-blue-900 via-blue-800 to-indigo-900">
                 <img src="photo\DSCF2385.jpg" alt="Slide 1" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
                 <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 1</div>
             </div>
-            <!-- Slide 2 -->
             <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-emerald-900 via-green-800 to-teal-900">
                 <img src="photo\DSCF2359.jpg" alt="Slide 2" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
                 <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 2</div>
             </div>
-            <!-- Slide 3 -->
             <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-slate-900 via-blue-950 to-indigo-950">
                 <img src="photo\DSCF2411.jpg" alt="Slide 3" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
                 <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 3</div>
             </div>
-            <!-- Slide 4 -->
             <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-green-950 via-emerald-800 to-cyan-950">
                 <img src="photo\DSCF2429.jpg" alt="Slide 4" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
                 <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 4</div>
             </div>
-            <!-- Slide 5 -->
             <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 bg-gradient-to-tr from-blue-950 via-indigo-900 to-purple-950">
                 <img src="photo\DSCF0810.jpg" alt="Slide 5" class="w-full h-full object-cover hidden" onerror="this.style.display='none'">
                 <div class="absolute inset-0 flex items-end justify-start p-4 text-[10px] text-white/40 font-mono">HERO SLIDE 5</div>
             </div>
         </div>
 
-        <!-- 全体オーバーレイ -->
         <div class="absolute inset-0 bg-black/30 z-10"></div>
 
-        <!-- コンテンツ -->
         <div class="relative z-20 max-w-3xl">
             <h2 class="text-2xl md:text-4xl font-black mb-3 drop-shadow-2xl leading-tight italic uppercase">Shiga Futsal Federation Official Web Site</h2>
             <p class="text-xs md:text-base mb-6 drop-shadow-lg font-medium">滋賀のフットサルを、もっと身近に。もっと熱く。</p>
@@ -280,8 +273,8 @@
     <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col lg:flex-row gap-8">
             
-            <!-- Left Side Menu  -->
-            <aside id="side-nav" class="lg:w-1/4 space-y-6">
+            <!-- Left Side Menu (Desktop ONLY or customized for mobile) -->
+            <aside id="side-nav" class="lg:w-1/4 space-y-6 hidden lg:block">
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
                     <div class="mb-6">
                         <div class="flex items-center text-shiga-blue mb-3 px-2 border-b pb-2">
@@ -299,6 +292,7 @@
                         </div>
                     </div>
 
+                    <!-- PC用サイドメニューリスト -->
                     <div class="space-y-1">
                         <a href="javascript:void(0);" onclick="showPage('home')" class="side-menu-item active" id="menu-home"><i class="fas fa-bullhorn mr-2 w-5 text-red-500"></i>更新情報</a>
                         <a href="javascript:void(0);" onclick="showPage('calendar')" class="side-menu-item" id="menu-calendar"><i class="fas fa-calendar-alt mr-2 w-5 text-blue-500"></i>イベントカレンダー</a>
@@ -322,6 +316,7 @@
                 
                 <!-- ==================== PAGE: HOME ==================== -->
                 <div id="page-home" class="page-section space-y-10">
+                    
                     <!-- News Section -->
                     <section id="news" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                         <div class="flex justify-between items-center mb-6 border-b pb-4">
@@ -331,7 +326,7 @@
                             <div class="flex gap-4 items-start border-b border-gray-50 pb-4">
                                 <div class="text-center min-w-[60px]">
                                     <p class="text-[10px] font-bold text-gray-400">2026</p>
-                                    <p class="text-lg font-black leading-none text-shiga-blue">06.09</p>
+                                    <p class="text-lg font-black leading-none text-shiga-blue">07.18</p>
                                 </div>
                                 <div>
                                     <span class="text-[10px] font-bold bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full mb-1 inline-block">SNS</span>
@@ -351,8 +346,8 @@
                         </div>
                     </section>
 
-                    <!-- Booking System Link -->
-                    <section class="bg-gradient-to-r from-[#005bac] to-[#003c77] p-6 rounded-2xl shadow-md group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-400">
+                    <!-- PC用 Booking System Link (lgのみ表示) -->
+                    <section class="hidden lg:block bg-gradient-to-r from-[#005bac] to-[#003c77] p-6 rounded-2xl shadow-md group hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-400">
                         <a href="https://select-type.com/member/login/?mi=rATiS3GHIds" target="_blank" class="flex flex-col md:flex-row items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-shiga-blue text-xl font-black shadow-sm group-hover:scale-105 transition-transform">
@@ -366,8 +361,6 @@
                             <i class="fas fa-chevron-circle-right text-white text-2xl group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </section>
-
-                    <!-- Instagram Embed Section -->
                     <section id="instagram-feed" class="bg-white rounded-2xl p-0 sm:p-6 shadow-sm border border-gray-100 overflow-hidden">
                         <div class="p-4 sm:p-0 sm:mb-6 border-b sm:border-b pb-4 flex justify-between items-center">
                             <h3 class="text-xl font-black text-shiga-blue flex items-center">
@@ -383,14 +376,12 @@
                             
                             <!-- 投稿埋め込み枠 1 -->
                             <div class="w-full max-w-[320px] flex justify-center overflow-hidden">
-                                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DakU441AXvZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; min-width:100%; padding:0; width:100%;">
-                                    <!-- プレースホルダー -->
+                                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Da6z9E7AaSC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; min-width:100%; padding:0; width:100%;">
                                     <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between w-full h-[450px]">
                                         <div class="flex items-center justify-between mb-3">
                                             <div class="flex items-center space-x-3">
                                                 <div class="w-10 h-10 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 p-[2px] rounded-full">
                                                     <div class="w-full h-full rounded-full bg-white p-[1px] flex items-center justify-center overflow-hidden">
-                                                        <!-- 修正：loading="lazy" を追加 -->
                                                         <img src="photo/sfa.png" loading="lazy" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=100'">
                                                     </div>
                                                 </div>
@@ -409,47 +400,6 @@
                                             <div class="h-3 bg-gray-200 rounded w-5/6"></div>
                                             <div class="h-3 bg-gray-200 rounded w-2/3"></div>
                                         </div>
-                                        <div class="flex justify-between items-center text-gray-500 border-t pt-3 text-xs font-bold">
-                                            <span class="hover:text-pink-600 transition"><i class="fas fa-heart mr-1.5"></i>いいね！</span>
-                                            <span class="text-[10px] text-gray-400">Instagramで見る</span>
-                                        </div>
-                                    </div>
-                                </blockquote>
-                            </div>
-
-                            <!-- 投稿埋め込み枠 2 -->
-                            <div class="w-full max-w-[320px] flex justify-center overflow-hidden">
-                                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DalfP15E2t4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:100%; min-width:100%; padding:0; width:100%;">
-                                    <!-- プレースホルダー -->
-                                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between w-full h-[450px]">
-                                        <div class="flex items-center justify-between mb-3">
-                                            <div class="flex items-center space-x-3">
-                                                <div class="w-10 h-10 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 p-[2px] rounded-full">
-                                                    <div class="w-full h-full rounded-full bg-white p-[1px] flex items-center justify-center overflow-hidden">
-                                                        <!-- 修正：loading="lazy" を追加 -->
-                                                        <img src="photo/sfa.png" loading="lazy" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=100'">
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <p class="text-xs font-black text-gray-800 leading-none">ishibe.yk</p>
-                                                    <p class="text-[9px] text-gray-400 mt-1">甲賀高分子スタジアム</p>
-                                                </div>
-                                            </div>
-                                            <i class="fab fa-instagram text-xl text-pink-500"></i>
-                                        </div>
-                                        
-                                        <div class="aspect-square rounded-lg bg-gradient-to-tr from-emerald-900 to-teal-900 flex flex-col items-center justify-center text-white/40 mb-3 relative overflow-hidden">
-                                            <i class="fab fa-instagram text-4xl mb-1"></i>
-                                            <span class="text-[10px] font-bold">Tap to View Post</span>
-                                        </div>
-                                        <div class="space-y-1.5 mb-3 flex-1">
-                                            <div class="h-3 bg-gray-200 rounded w-5/6"></div>
-                                            <div class="h-3 bg-gray-200 rounded w-2/3"></div>
-                                        </div>
-                                        <div class="flex justify-between items-center text-gray-500 border-t pt-3 text-xs font-bold">
-                                            <span class="hover:text-pink-600 transition"><i class="fas fa-heart mr-1.5"></i>いいね！</span>
-                                            <span class="text-[10px] text-gray-400">Instagramで見る</span>
-                                        </div>
                                     </div>
                                 </blockquote>
                             </div>
@@ -458,6 +408,55 @@
                         <!-- Instagram埋め込み用のスクリプトの読み込み（deferで遅延させる） -->
                         <script src="//www.instagram.com/embed.js"></script>
                     </section>
+
+                    <!-- SP用 Net Booking Menu (lg未満のみ表示, Instagramの下に配置) -->
+                    <div class="lg:hidden bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-6">
+                        <div class="mb-4">
+                            <div class="flex items-center text-shiga-blue mb-3 px-2 border-b pb-2">
+                                <i class="fas fa-calendar-check mr-2"></i>
+                                <span class="font-black text-sm uppercase tracking-wider">Net Booking</span>
+                            </div>
+                            <div class="space-y-1">
+                                <a href="javascript:void(0);" onclick="showPage('guide')" class="side-menu-item flex items-center"><i class="fas fa-plus-circle mr-2 w-5 text-shiga-blue"></i>ネット予約のご案内</a>
+                                <div class="flex flex-col">
+                                    <a href="https://select-type.com/member/reg/?mi=rATiS3GHIds" target="_blank" class="side-submenu-item"><i class="fas fa-user-plus mr-1.5 opacity-70"></i>メンバー新規登録</a>
+                                    <a href="https://select-type.com/member/login/?mi=rATiS3GHIds" target="_blank" class="side-submenu-item"><i class="fas fa-sign-in-alt mr-1.5 opacity-70"></i>ログイン</a>
+                                    <a href="https://select-type.com/rsv/?id=CaWEHFt78Mg&c_id=110280&w_flg=1" target="_blank" class="side-submenu-item"><i class="far fa-calendar-check mr-1.5 opacity-70"></i>コート空き状況・予約</a>
+                                    <a href="https://select-type.com/rsv/?id=CaWEHFt78Mg&c_id=110780&w_flg=1&mode=1" target="_blank" class="side-submenu-item"><i class="fas fa-user-friends mr-1.5 opacity-70"></i>個人参加予約</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 追加: お問い合わせ (スマホ用) -->
+                        <div class="pt-2 border-t border-gray-100">
+                            <a href="javascript:void(0);" onclick="showPage('contact')" class="side-menu-item flex items-center bg-gray-100/80 rounded-xl hover:bg-gray-200 transition">
+                                <i class="fas fa-envelope mr-2 w-5 text-shiga-blue"></i>お問い合わせ
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SP用 ご利用案内(料金) ボタン (lg未満のみ表示) -->
+                    <div class="lg:hidden mt-2">
+                        <a href="javascript:void(0);" onclick="showPage('guide')" class="block bg-shiga-blue text-white p-4 rounded-2xl shadow-md font-bold text-center hover:bg-blue-700 transition">
+                            <i class="fas fa-info-circle mr-2"></i>ご利用案内(料金)はこちら
+                        </a>
+                    </div>
+
+                    <!-- SP用 総合予約システム ログインボタン (lg未満のみ表示) -->
+                    <section class="lg:hidden bg-gradient-to-r from-[#005bac] to-[#003c77] p-6 rounded-2xl shadow-md group border border-blue-400 mt-2">
+                        <a href="https://select-type.com/member/login/?mi=rATiS3GHIds" target="_blank" class="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-shiga-blue text-xl font-black shadow-sm group-hover:scale-105 transition-transform shrink-0">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-white text-sm md:text-base tracking-tight">甲賀高分子スタジアム 総合予約システム</h4>
+                                    <p class="text-xs text-blue-100 font-bold tracking-widest mt-0.5">【メンバーページ】へログイン</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-circle-right text-white text-2xl group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </section>
+
                 </div>
 
 
@@ -566,7 +565,6 @@
 
                 <!-- ==================== PAGE: 施設案内 (FACILITIES) ==================== -->
                 <div id="page-facilities" class="page-section hidden space-y-8">
-                    
                     <!-- 観覧席について -->
                     <section class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                         <div class="page-header-green rounded-lg mb-6 flex items-center justify-center">
@@ -659,7 +657,6 @@
                             <i class="fas fa-map-marked-alt mr-2"></i>アクセス（地図）
                         </div>
 
-                        <!-- 基本情報テーブル -->
                         <div class="overflow-x-auto mb-6">
                             <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
                                 <tbody>
@@ -698,11 +695,9 @@
 
                         <!-- Google Maps Embed -->
                         <div class="w-full h-80 rounded-xl overflow-hidden border border-gray-200 shadow-sm mb-6">
-                            <!-- 修正：loading="lazy" を追加 -->
                             <iframe src="https://maps.google.co.jp/maps?output=embed&q=甲賀高分子スタジアム 滋賀県湖南市石部北一丁目２−１６７７" loading="lazy" class="w-full h-full" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
 
-                        <!-- 交通アクセス案内テーブル -->
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
                                 <tbody>
@@ -853,7 +848,6 @@
                         
                         <!-- Notion 埋め込み iframe -->
                         <div class="w-full rounded-xl overflow-hidden border border-gray-200 shadow-sm mb-6 bg-gray-50">
-                            <!-- 修正：loading="lazy" を追加 -->
                             <iframe src="https://chalk-dugout-319.notion.site/ebd//b4c5eea1ee994361a89e58dbec80fdee" loading="lazy" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
                         </div>
 
@@ -871,7 +865,6 @@
                         </div>
                     </section>
                 </div>
-
 
                 <!-- ==================== PAGE: 個人参加 (INDIVIDUAL) ==================== -->
                 <div id="page-individual" class="page-section hidden space-y-8">
@@ -898,7 +891,6 @@
                         </div>
                         <p class="text-xs text-gray-500 mb-6 text-center">《こんな風にチームに分かれて、ゲーム形式でフットサルを楽しんで頂いています》</p>
 
-                        <!-- フットサル個人参加 表組み -->
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
                                 <tbody>
@@ -964,7 +956,6 @@
                             </p>
                         </div>
 
-                        <!-- ウォーキングフットボール 表組み -->
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm border-collapse border border-gray-200 rounded-lg overflow-hidden">
                                 <tbody>
@@ -1089,13 +1080,11 @@
                         
                         <!-- Google Calendar Embed -->
                         <div class="w-full rounded-xl overflow-hidden border border-gray-200 shadow-sm calendar-container bg-gray-50">
-                            <!-- 修正：loading="lazy" を追加 -->
                             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTokyo&src=c2hpZ2EuZnV0c2FsLmZlZGVyYXRpb25AZ21haWwuY29t&src=a3Q5NDE5MjI4cXJuZWIzOTZtbWM1cWthZW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=bjViZm5yZzFndXNrajIwMDlvbHBiaWFzZWNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23039BE5&color=%23D50000&color=%2333B679" loading="lazy" style="border-width:0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
                         </div>
 
                     </section>
                 </div>
-
 
                 <!-- ==================== PAGE: お問い合わせ (CONTACT) ==================== -->
                 <div id="page-contact" class="page-section hidden space-y-6">
@@ -1139,7 +1128,6 @@
                                 <textarea required rows="5" class="w-full border p-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-shiga-blue" placeholder="メッセージ・ご要望をご入力ください。"></textarea>
                             </div>
 
-                            <!-- Success/Error Notification Modal-like Inline -->
                             <div id="form-notification" class="hidden p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 font-bold mb-2">
                                 <i class="fas fa-check-circle mr-1.5"></i>お問い合わせを送信しました！事務局より折り返しご連絡させていただきますっ♪
                             </div>
@@ -1186,21 +1174,18 @@
                         
                         <!-- 1. Koga Polymer -->
                         <a href="https://www.koga-polymer.co.jp/" target="_blank" class="sponsor-banner flex items-center justify-center h-16 bg-white rounded-xl p-3 shadow-sm overflow-hidden">
-                            <!-- 修正：loading="lazy" を追加 -->
                             <img src="photo\koka_logo.png" loading="lazy" alt="Koga Polymer" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                             <div class="hidden text-xs font-black text-shiga-blue uppercase font-sans">Koga Polymer</div>
                         </a>
                         
                         <!-- 2. CEREZO OSAKA -->
                         <a href="https://www.cerezo.jp/" target="_blank" class="sponsor-banner flex items-center justify-center h-16 bg-white rounded-xl p-3 shadow-sm overflow-hidden">
-                            <!-- 修正：loading="lazy" を追加 -->
                             <img src="photo\logo_row.svg" loading="lazy" alt="CEREZO OSAKA" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                             <div class="hidden text-xs font-black text-pink-600 uppercase font-sans">CEREZO OSAKA</div>
                         </a>
                        
                         <!-- 3. Koyama Clinic -->
                         <a href="https://www.koyama.clinic/" target="_blank" class="sponsor-banner flex items-center justify-center h-16 bg-white rounded-xl p-3 shadow-sm overflow-hidden">
-                            <!-- 修正：loading="lazy" を追加 -->
                             <img src="photo\sitelogo.jpg" loading="lazy" alt="Koyama Clinic" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                             <div class="hidden text-xs font-black text-emerald-600 uppercase font-sans">Koyama Clinic</div>
                         </a>
@@ -1227,7 +1212,6 @@
         <div class="relative w-full overflow-hidden">
             <div class="slider-track">
                 
-                <!-- ギャラリー画像の loading="lazy" 追加 -->
                 <div class="slide">
                     <img src="photo\DSCF8532.jpg" loading="lazy" alt="滋賀フットサル ギャラリー 1" class="w-full h-full object-cover rounded-xl shadow-md bg-gray-100" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="hidden w-full h-full bg-gray-100 rounded-xl flex-col items-center justify-center border border-gray-200 text-gray-400">
@@ -1343,17 +1327,14 @@
         </div>
     </footer>
 
-    <!-- スライドショー＆ルーティングJavaScript -->
     <script>
         // SPAページ切替関数
         function showPage(pageId) {
-            // 全てのメインコンテンツセクションを非表示にする
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(section => {
                 section.classList.add('hidden');
             });
 
-            // 指定されたセクションを表示
             const activeSection = document.getElementById('page-' + pageId);
             if (activeSection) {
                 activeSection.classList.remove('hidden');
@@ -1371,27 +1352,29 @@
             }
 
             // スムーズスクロール
-            // PCの場合はトップへ、スマホの場合はメインコンテンツの先頭へ
-            if (window.innerWidth < 1024) { 
-                const mainElement = document.getElementById('main-content');
-                const headerElement = document.getElementById('main-header');
-                
-                if(mainElement) {
-                     const headerHeight = headerElement ? headerElement.offsetHeight : 80; 
-                     const elementPosition = mainElement.getBoundingClientRect().top;
-                     const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; 
-                     
-                     window.scrollTo({
-                          top: offsetPosition,
-                          behavior: 'smooth'
-                     });
+            // レイアウトの再計算を待つためにsetTimeoutを使用し、確実に指定エリアへスクロールさせます
+            setTimeout(() => {
+                if (window.innerWidth < 1024) { 
+                    const mainElement = document.getElementById('main-content');
+                    const headerElement = document.getElementById('main-header');
+                    
+                    if(mainElement) {
+                         const headerHeight = headerElement ? headerElement.offsetHeight : 80; 
+                         const rect = mainElement.getBoundingClientRect();
+                         const offsetPosition = rect.top + window.scrollY - headerHeight - 10;
+                         
+                         window.scrollTo({
+                              top: offsetPosition,
+                              behavior: 'smooth'
+                         });
+                    }
+                } else {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 }
-            } else {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
+            }, 50);
 
             // モバイルメニューを閉じる
             closeMobileMenu();
@@ -1420,7 +1403,6 @@
             });
         }
 
-        // お問い合わせフォーム擬似送信処理
         function handleContactSubmit(event) {
             event.preventDefault();
             const notification = document.getElementById('form-notification');
@@ -1434,7 +1416,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // スライドショーの制御
             const slides = document.querySelectorAll('.hero-slide');
             let currentSlide = 0;
 
@@ -1456,7 +1437,6 @@
                 }
             });
 
-            // クロスディゾルブ（5秒）
             function nextSlide() {
                 slides[currentSlide].classList.remove('opacity-100');
                 slides[currentSlide].classList.add('opacity-0');
